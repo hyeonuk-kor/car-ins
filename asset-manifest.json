@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/kbds/v2/static/css/main.c2cab247.css",
-    "main.js": "/kbds/v2/static/js/main.bd6200a7.js",
-    "index.html": "/kbds/v2/index.html",
-    "main.c2cab247.css.map": "/kbds/v2/static/css/main.c2cab247.css.map",
-    "main.bd6200a7.js.map": "/kbds/v2/static/js/main.bd6200a7.js.map"
+    "main.css": "/car-ins/kbds/v2/static/css/main.c2cab247.css",
+    "main.js": "/car-ins/kbds/v2/static/js/main.56347cca.js",
+    "index.html": "/car-ins/kbds/v2/index.html",
+    "main.c2cab247.css.map": "/car-ins/kbds/v2/static/css/main.c2cab247.css.map",
+    "main.56347cca.js.map": "/car-ins/kbds/v2/static/js/main.56347cca.js.map"
   },
   "entrypoints": [
     "static/css/main.c2cab247.css",
-    "static/js/main.bd6200a7.js"
+    "static/js/main.56347cca.js"
   ]
 }
