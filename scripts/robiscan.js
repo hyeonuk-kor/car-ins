@@ -295,6 +295,13 @@ if(resetBtn) {
     });
 }
 
+let backbtn = document.getElementById("backBtn");
+if(backbtn) {
+    backbtn.addEventListener("click", () => {
+        window.location.href = "./robiscan.html?scanner=residence_back";
+    })
+}
+
 /**
  * "재촬영" 버튼 클릭 시 발생하는 이벤트
  */
