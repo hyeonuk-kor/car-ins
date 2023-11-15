@@ -1,1 +1,87 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>React App</title><base href="/"/><script defer="defer" src="/static/js/main.1fb9cbc4.js"></script><link href="/static/css/main.26219513.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="WebRTC code samples" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"
+    />
+    <meta itemprop="description" content="Client-side WebRTC code samples" />
+    <meta itemprop="name" content="WebRTC code samples" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta id="theme-color" name="theme-color" content="#ffffff" />
+
+    <title>Menu | Robiscan</title>
+    <link rel="stylesheet" type="text/css" href="./styles/reset.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./styles/menu.css?v=20230109_01"
+    />
+    <link rel="icon" href="./favicon.ico" />
+  </head>
+
+  <body>
+    <main class="container">
+      <p class="title">아래에서 메뉴를 선택하세요.</p>
+      <div class="menu-group">
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=idcard">
+            <img src="./images/idcard_menu.png" alt="신분증" />
+          </a>
+          <p>신분증</p>
+        </div>
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=passport">
+            <img src="./images/passport_menu.png" alt="여권" />
+          </a>
+          <p>여권</p>
+        </div>
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=residence">
+            <img
+              src="./images/residence_front_menu.png"
+              alt="외국인등록증 앞면"
+            />
+          </a>
+          <p>외국인등록증 앞면</p>
+        </div>
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=residence_back">
+            <img
+              src="./images/residence_back_menu.png"
+              alt="외국인등록증 뒷면"
+            />
+          </a>
+          <p>외국인등록증 뒷면</p>
+        </div>
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=capture&capture_edge=card">
+            <img src="./images/capture_card_menu.png" alt="캡처 - 카드타입" />
+          </a>
+          <p>캡처 - 카드타입</p>
+        </div>
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=capture&capture_edge=passport">
+            <img
+              src="./images/capture_passport_menu.png"
+              alt="캡처 - 여권타입"
+            />
+          </a>
+          <p>캡처 - 여권타입</p>
+        </div>
+        <div class="menu-wrap">
+          <a href="./robiscan.html?scanner=capture&capture_edge=a4">
+            <img src="./images/capture_a4_menu.png" alt="캡처 - A4 타입" />
+          </a>
+          <p>캡처 - A4 타입</p>
+        </div>
+      </div>
+      <div class="logo-wrap">
+        <img class="logo" src="./images/posicube_logo.png" alt="" />
+      </div>
+    </main>
+  </body>
+</html>

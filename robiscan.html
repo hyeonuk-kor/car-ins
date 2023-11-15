@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="WebRTC code samples" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta itemprop="description" content="Client-side WebRTC code samples" />
+    <meta itemprop="name" content="WebRTC code samples" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta id="theme-color" name="theme-color" content="#ffffff" />
+
+    <title>Robiscan</title>
+    <link rel="stylesheet" type="text/css" href="./styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/robiscan.css" />
+    <link rel="icon" href="./favicon.ico" />
+  </head>
+
+  <body>
+    <section id="scanContainer" class="scan-container">
+      <video id="scanView" class="scan-view" width="640" height="480" playsinline muted></video>
+      <div class="scan-box-wrap">
+        <a class="scan-box__cancel" href="./">
+          <img src="./images/cancel_icon.png" alt="닫기" />
+        </a>
+        <div id="scanBoxMask" class="scan-box__mask--init"></div>
+        <div id="scanBoxGuide" class="scan-box__guide--init">
+          <div id="scanBoxLoading" class="scan-box__loading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div id="scanBoxPassportPhoto" class="scan-box__passport-photo"></div>
+          <div id="scanBoxPassportMrz" class="scan-box__passport-mrz"></div>
+          <p id="scanBoxDesc" class="scan-box__desc">네모칸 안에 맞추세요.</p>
+          <div class="scan-box__tip-wrap">
+            <div class="scan-box__tip">
+              <img src="./images/light_icon.png" alt="" />
+              <p>흔들리거나 빛이 반사되지 않도록 해주세요.</p>
+            </div>
+            <div class="scan-box__tip">
+              <img src="./images/dark_icon.png" alt="" />
+              <p>어두운 바닥에서 촬영해주세요.</p>
+            </div>
+          </div>
+        </div>
+        <div class="scan-box__camera-content">
+          <div class="scan-box__camera-auto-wrap">
+            <button id="autoCameraToggle" class="camera-toggle__auto"></button>
+            <div class="scan-box__camera-auto-label">
+              <p>자동</p>
+              <p>수동</p>
+            </div>
+          </div>
+          <div id="camera-btn_layout" class="camera-btn_layout-wrap">
+            <div class="camera-btn-wrap">
+              <button id="takeCameraBtn" class="camera-btn__take"></button>
+              <div class="camera-btn-label">
+                <p>스크린샷</p>
+              </div>
+            </div>
+            <div class="camera-btn-wrap">
+              <!-- <label for="file-capture-manual" class="camera_dev-btn__take"> -->
+              <button id="takeDevCameraBtn" class="camera-btn__take"></button>
+              <div class="camera-btn-label">
+                <p>카메라촬영</p>
+              </div>
+              <!-- </label> -->
+              <input
+                id="file-capture-manual"
+                type="file"
+                name="files"
+                accept="image/jpeg" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div id="toast" class="toast-wrap" style="display: none">
+        <div class="toast"></div>
+      </div> -->
+    </section>
+    <section id="resultContainer" class="result-container">
+      <div class="result-canvas-wrap">
+        <canvas id="resultCanvas" class="result-canvas"></canvas>
+      </div>
+      <hr class="result-divider" />
+      <div class="result-box-wrap">
+        <p class="result-box__title">결과값</p>
+        <p id="resultBoxDesc" class="result-box__desc"></p>
+      </div>
+      <div class="result-btn-wrap">
+        <button id="resetBtn" class="result-btn__reset">메인화면</button>
+        <button id="redetectBtn" class="result-btn__redetect">재촬영</button>
+        <button id="sendServerBtn" class="result-btn__reset">서버전송</button>
+      </div>
+    </section>
+    <div id="toast" class="toast-wrap" style="display: none">
+      <div class="toast"></div>
+    </div>
+
+    <!-- 기본 스크립트 -->
+    <script type="module" src="./scripts/robiscan.js"></script>
+  </body>
+</html>

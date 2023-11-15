@@ -1,0 +1,41 @@
+{
+  "version": "20231114_001",
+  "licenseKey": "a1joMYHAAhiuvA/10WOyNaSHB5U51N01conh1zFHBbKwdxMh/TpsaqSHBv9tuUaYSV2hZv9+J0LzdhEEK+bKy0RwekVzfHcugomkM9OlDY51fEEowp9N98rAgO9bs0bj",
+  "customer": "posicube",
+  "scanner": {
+    "doRetry": true,
+    "sendResultToServer": false,
+    "fuzz": false,
+    "loadTimeout": 0,
+    "detectTimeout": 30,
+    "recogTimeout": 60,
+    "veriCnt": 0,
+    "distLimit": 0.1,
+    "autoTimeover": 0,
+    "colorScale": 1.0,
+    "faceThreshold": 0.915,
+    "colorThreshold": 0.28,
+    "specularThreshold": 0.02,
+    "quality": 90,
+    "minimalScan": false
+  },
+  "view": {
+    "guideRectX": 0.5,
+    "guideRectY": 0.5
+  },
+  "logger": {
+    "level": "ERROR",
+    "logUI": false,
+    "logConsole": false
+  },
+  "transfer": {
+    "destinationURL": "https://127.0.0.1:8995",
+    "deviceId": "0123456789abcdef01234567890abcdef",
+    "secretId": "client-POSICUBE-dev-recognizer-clientId2022101208754291",
+    "appId": "com.posicube.webrtc",
+    "originCode": "WebRtc_Reserved_For_Demo",
+    "appType": "WebRtc",
+    "localCert": false,
+    "reqFD": false
+  }
+}
