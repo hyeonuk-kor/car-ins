@@ -56,7 +56,7 @@ const Callbacks = {
             // 서버 전송 UI 표시
             let showBtn = (config && config.scanner && config.scanner.sendResultToServer);
             showServerSendBtn(showBtn);
-
+            console.log(config)
             // 스캐너 동작 시작
             scanner.startScanner()
             .then((availableAutoScanner) => {
@@ -136,7 +136,23 @@ const Callbacks = {
 
                         // 예시: OCR 결과를 서버로 전송하기 위해 변수에 보관
                         ocrResult = result;
-                        
+                        let sctype = getParameterByName('scanner');
+                        if(sctype==='RESIDENCE') {
+                            localStorage.setItem('step1Result', ocrResult);
+                        } else if(sctype==='RESIDENCE_back') {
+                            localStorage.setItem('step2Result', ocrResult);
+                        }
+                        // 로컬 저장소에서 결과 가져오기
+                        const storedStep1Result = localStorage.getItem('step1Result');
+                        const storedStep2Result = localStorage.getItem('step2Result');
+
+                        // 결과와 함께 다른 서버로 전송
+                        if (storedStep1Result && storedStep2Result) {
+                            alert(storedStep1Result);
+                            alert(storedStep2Result);
+                        } else if(!storedStep2Result) {
+                            window.location.href = "./scanner=RESIDENCE_back";
+                        }
                         // 예시: OCR 서버로 결과 즉시 전송
                         // sendOcrResult2Server(result);
                     } else if(result.lastRetryType === constants.RetryType.FACE) {
@@ -273,6 +289,17 @@ window.onload = function () {
 };
 
 /**
+ * URL 쿼리스트링 파라미터
+ */
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`), results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+/**
  * 캡처 가능 유무 토글 버튼 클릭 이벤트
  */
 let camToggleBtn = document.getElementById("autoCameraToggle");
@@ -293,13 +320,6 @@ if(resetBtn) {
     resetBtn.addEventListener("click", () => {
         window.location.href = "./";
     });
-}
-
-let backbtn = document.getElementById("backBtn");
-if(backbtn) {
-    backbtn.addEventListener("click", () => {
-        window.location.href = "./robiscan.html?scanner=residence_back";
-    })
 }
 
 /**
