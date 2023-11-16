@@ -369,7 +369,7 @@ export function printResultText(result) {
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
     } else if (cardType === ScanCardType.RESIDENCE) {
-        resultDesc += `${scanResult.fullImage.b64(false)}`;
+        resultDesc += `&bull;Image: <img src="${scanResult.fullImage.b64(false)}"><br/>`;
         resultDesc += `&bull;Scan Type: Residence<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
         //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
@@ -392,7 +392,7 @@ export function printResultText(result) {
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
         
     } else if (scanResult.cardType === ScanCardType.RESIDENCE_BACK) {
-        resultDesc += `${scanResult.fullImage.b64(false)}`;
+        resultDesc += `&bull;Image: <img src="${scanResult.fullImage.b64(false)}"><br/>`;
         resultDesc += `&bull;Scan Type: Residence Back<br/>`;
         resultDesc += `&bull;Serial: ${scanResult.serial}<br/>`;                //일련번호  JTAG_ID_SERIAL
         resultDesc += `&bull;Permission_1: ${scanResult.permission_1}<br/>`;    //허가일자1 JTAG_ID_PERMISSION1
