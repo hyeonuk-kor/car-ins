@@ -78,12 +78,16 @@ export function resultCallback(status, result) {
                 if(result.scanResult && result.scanResult.maskedCardImage) {
                     showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
                         () => {
+                            alert(JSON.stringify(result));
+                            //alert(result);
+                            /*
                             util.sleep(1000).then(() => {
                                 let isConfirm = confirm("스캔 결과 이미지입니다.\n확인 버튼을 누르면 이미지가 삭제됩니다.");
                                 if(isConfirm) {
                                     clearResultCanvas();
                                 }
                             });
+                            */
                         });
                 }
             }
