@@ -137,6 +137,7 @@ const Callbacks = {
                         // 예시: OCR 결과를 서버로 전송하기 위해 변수에 보관
                         ocrResult = result;
                         let sctype = getParameterByName('scanner');
+                        alert(sctype)
                         const storedStep1Result = localStorage.getItem('step1Result');
                         const storedStep2Result = localStorage.getItem('step2Result');
 
@@ -145,6 +146,7 @@ const Callbacks = {
                             window.location.href = "./robiscan.html?scanner=residence_back";
                         } else if(sctype==='residence_back') {
                             localStorage.setItem('step2Result', ocrResult);
+                        } else {
                             alert(storedStep1Result);
                             alert(storedStep2Result);
                         }
