@@ -385,16 +385,18 @@ if(sendServerBtn) {
             if(ocrResult == null) {
                 alert("서버에 전송할 데이터가 없습니다.");
             } else {
+                sendOcrResult2Server(ocrResult);
                 let check = getParameterByName('scanner');
                 if(check === 'residence') {
                     alert('신분증 앞면 정보 전송 로직 작성')
-                    alert(JSON.stringify(ocrResult.data));
+                    alert(ocrResult.scanResult);
+                    alert(ocrResult.data);
                     window.location.href = "./robiscan.html?scanner=residence_back";
                 } else if(check === 'residence_back') {
                     alert('신분증 뒷면 정보 전송 로직 작성');
-                    alert(JSON.stringify(ocrResult.data));
+                    alert(ocrResult.scanResult);
+                    alert(ocrResult.data);
                 }
-                sendOcrResult2Server(ocrResult);
             }
         } else {
             logger.info("upload image to ocr server");
