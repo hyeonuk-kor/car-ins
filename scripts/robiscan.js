@@ -385,6 +385,15 @@ if(sendServerBtn) {
             if(ocrResult == null) {
                 alert("서버에 전송할 데이터가 없습니다.");
             } else {
+                let check = getParameterByName('scanner');
+                if(check === 'residence') {
+                    alert('신분증 앞면 정보 전송 로직 작성')
+                    alert(JSON.stringify(ocrResult.data));
+                    window.location.href = "./robiscan.html?scanner=residence_back";
+                } else if(check === 'residence_back') {
+                    alert('신분증 뒷면 정보 전송 로직 작성');
+                    alert(JSON.stringify(ocrResult.data));
+                }
                 sendOcrResult2Server(ocrResult);
             }
         } else {
@@ -668,27 +677,17 @@ function sendOcrResult2Server(result) {
                     // 예시: 로딩 완료되면 1초 기다렸다가 이미지 로딩 UI 제거 및 후처리
                     return new Promise(resolve => setTimeout(resolve, 1000))
                         .then(() => {
-                            let check = getParameterByName('scanner');
-                            if(check === 'residence') {
-                                alert('신분증 앞면 정보 전송 로직 작성')
-                                alert(JSON.stringify(dto.data));
-                                window.location.href = "./robiscan.html?scanner=residence_back";
-                            } else if(check === 'residence_back') {
-                                alert('신분증 뒷면 정보 전송 로직 작성');
-                                alert(JSON.stringify(dto.data));
-                            }
                             /*
                             let isConfirm = confirm("확인 버튼을 누르면 이미지가 삭제됩니다.");
                             if(isConfirm) {
                                 view.clearResultCanvas();
                             }
-
+                            */
                             // 전달받은 결과 이미지들 삭제
                             dto.data.cropIdImage = null;
                             dto.data.maskedCropIdImage = null;
                             dto.data.fullFrameIdImage = null;
                             dto.data.photoIdImage = null;
-                            */
                         });
                 }
             );
