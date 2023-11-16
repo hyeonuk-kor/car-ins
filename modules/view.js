@@ -75,6 +75,7 @@ export function resultCallback(status, result) {
             printResultText(result);
 
             if(!result.fuzzed) {
+                /*
                 if(result.scanResult && result.scanResult.maskedCardImage) {
                     showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
                         () => {
@@ -85,7 +86,9 @@ export function resultCallback(status, result) {
                                 }
                             });
                         });
-                }
+                }*/
+                if(result.scanResult)
+                    showResultImage(result.scanResult.fullImage.b64(is_fuzzed))
             }
         }
     } else if(status === ScannerStatus.STOP_CAMERA) {
