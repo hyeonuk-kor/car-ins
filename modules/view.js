@@ -452,7 +452,7 @@ export function printResultText(result) {
         resultDesc += `&bull;GiroMRZ2: ${scanResult.giro_mrz2}<br/>`;
         resultDesc += `&bull;GiroPayNum: ${scanResult.giro_payment_number}<br/>`;
     }
-    setResultDesc(resultDesc);
+   // setResultDesc(resultDesc);
     let url_scanner = getParameterByName('scanner');
     if(url_scanner==='residence') {
         localStorage.setItem('step1Result', resultDesc);
@@ -463,8 +463,9 @@ export function printResultText(result) {
     const step1 = localStorage.getItem('step1Result');
     const step2 = localStorage.getItem('step2Result');
     if(step1 && step2) {
-        alert(step1);
-        alert(step2);
+        resultDesc = step1;
+        resultDesc += step2;
+        setResultDesc(resultDesc);
     }
 }
 
