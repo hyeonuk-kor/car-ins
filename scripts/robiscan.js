@@ -136,6 +136,7 @@ const Callbacks = {
 
                         // 예시: OCR 결과를 서버로 전송하기 위해 변수에 보관
                         ocrResult = result;
+                        alert('여기서 서버로 전송할거임');
                         /*
                         let sctype = getParameterByName('scanner');
                         if(sctype==='RESIDENCE') {
@@ -345,12 +346,18 @@ if(sendServerBtn) {
         const isAuto = scanner.isAutoMode();
         if (isAuto) {
             logger.info("send ocr result to ocr server");
-
+            
             // 자동 스캔 결과 서버 전송
             if(ocrResult == null) {
                 alert("서버에 전송할 데이터가 없습니다.");
             } else {
                 sendOcrResult2Server(ocrResult);
+                let check = getParameterByName('scanner');
+                if(check === 'residence') {
+                    window.location.href = "./robiscan.html?scanner=residence_back";
+                } else if(check === 'residence_back') {
+                    alert('서버 전송 시작');
+                }
             }
         } else {
             logger.info("upload image to ocr server");
@@ -486,6 +493,10 @@ registerCameraCaptureEvent(
 
 function showServerSendBtn(show) {
     if (show) {
+        let check = getParameterByName('scanner');
+        if(check === 'residence') {
+            document.getElementById("sendServerBtn").textContent = '신분증 뒷면 촬영';
+        } 
         document.getElementById("sendServerBtn").style.display = "inline-block";
     } else {
         document.getElementById("sendServerBtn").style.display = "none";

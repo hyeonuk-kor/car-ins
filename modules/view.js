@@ -343,7 +343,7 @@ export function printResultText(result) {
         return;
     }
     const cardType = scanResult.cardType;
-    
+
     if (cardType === ScanCardType.IDCARD) {
         resultDesc += `&bull;Scan Type: ID Card<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
@@ -454,24 +454,10 @@ export function printResultText(result) {
         resultDesc += `&bull;GiroMRZ2: ${scanResult.giro_mrz2}<br/>`;
         resultDesc += `&bull;GiroPayNum: ${scanResult.giro_payment_number}<br/>`;
     }
-   // setResultDesc(resultDesc);
-    let url_scanner = getParameterByName('scanner');
-    if(url_scanner==='residence') {
-        localStorage.setItem('step1Result', resultDesc);
-        localStorage.setItem('step1Image', scanResult.fullImage.b64(false));
-        window.location.href = "./robiscan.html?scanner=residence_back";
-    } else if(url_scanner==='residence_back') {
-        localStorage.setItem('step2Result', resultDesc);
-        localStorage.setItem('step2Image', scanResult.fullImage.b64(false));
-    }
-    const step1 = localStorage.getItem('step1Result');
-    const step2 = localStorage.getItem('step2Result');
-    if(step1 && step2) {
-        const img1 = localStorage.getItem('step1Image');
-        const img2 = localStorage.getItem('step2Image');
-        resultDesc = step1 + `<img src="${img1}">` + step2 + `<img src="${img2}">`;
-        setResultDesc(resultDesc);
-    }
+    resultDesc = `촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.`;
+    setResultDesc(resultDesc);
+    
+    
 }
 
 function getParameterByName(name, url = window.location.href) {
