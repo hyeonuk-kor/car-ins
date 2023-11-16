@@ -369,7 +369,6 @@ export function printResultText(result) {
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
     } else if (cardType === ScanCardType.RESIDENCE) {
-        resultDesc += `&bull;Image: <img src="${scanResult.fullImage.b64(false)}"><br/>`;
         resultDesc += `&bull;Scan Type: Residence<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
         //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
@@ -392,7 +391,6 @@ export function printResultText(result) {
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
         
     } else if (scanResult.cardType === ScanCardType.RESIDENCE_BACK) {
-        resultDesc += `&bull;Image: <img src="${scanResult.fullImage.b64(false)}"><br/>`;
         resultDesc += `&bull;Scan Type: Residence Back<br/>`;
         resultDesc += `&bull;Serial: ${scanResult.serial}<br/>`;                //일련번호  JTAG_ID_SERIAL
         resultDesc += `&bull;Permission_1: ${scanResult.permission_1}<br/>`;    //허가일자1 JTAG_ID_PERMISSION1
@@ -460,14 +458,18 @@ export function printResultText(result) {
     let url_scanner = getParameterByName('scanner');
     if(url_scanner==='residence') {
         localStorage.setItem('step1Result', resultDesc);
+        localStorage.setItem('step1Image', scanResult.fullImage.b64(false));
         window.location.href = "./robiscan.html?scanner=residence_back";
     } else if(url_scanner==='residence_back') {
         localStorage.setItem('step2Result', resultDesc);
+        localStorage.setItem('step2Image', scanResult.fullImage.b64(false));
     }
     const step1 = localStorage.getItem('step1Result');
     const step2 = localStorage.getItem('step2Result');
     if(step1 && step2) {
-        resultDesc = step1 + step2;
+        const img1 = localStorage.getItem('step1Image');
+        const img2 = localStorage.getItem('step2Image');
+        resultDesc = step1 + `<img src="${img1}">` + step2 + `<img src="${img2}">`;
         setResultDesc(resultDesc);
     }
 }
