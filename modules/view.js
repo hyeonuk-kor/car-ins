@@ -75,9 +75,9 @@ export function resultCallback(status, result) {
             printResultText(result);
 
             if(!result.fuzzed) {
-                if(result.scanResult && result.scanResult.maskedCardImage) {
+                if(result.scanResult && result.scanResult.cropIdImage) {
  //                   showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed),
-                    showResultImage(result.scanResult.fullFrameIdImageData.b64(result.fuzzed), 
+                    showResultImage(result.scanResult.cropIdImage.b64(result.fuzzed), 
                         () => {
                             alert(JSON.stringify(result));
                             //alert(result);
