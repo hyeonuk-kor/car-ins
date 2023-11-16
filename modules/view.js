@@ -407,6 +407,9 @@ export function printResultText(result) {
         resultDesc += `&bull;Expiry_4: ${scanResult.expiry_4}<br/>`;            //만료일자4 JTAG_ID_EXPIRY4
         resultDesc += `&bull;Confirm_4: ${scanResult.confirm_4}<br/>`;          //확인4    JTAG_ID_CONFIRM4
         scanResult = localStorage.getItem('step1Result');
+        alert(scanResult);
+        alert(JSON.stringify(scanResult))
+        scanResult = JSON.stringify(scanResult);
         resultDesc += `&bull;Scan Type: Residence<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
         //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
