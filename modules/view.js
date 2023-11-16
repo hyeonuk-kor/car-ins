@@ -79,7 +79,7 @@ export function resultCallback(status, result) {
  //                   showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed),
                     showResultImage(result.scanResult.cropIdImage.b64(result.fuzzed), 
                         () => {
-                            alert(JSON.stringify(result));
+                            alert("view.js의 82 line : "+JSON.stringify(result));
                             //alert(result);
                             /*
                             util.sleep(1000).then(() => {

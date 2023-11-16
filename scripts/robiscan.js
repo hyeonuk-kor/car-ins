@@ -674,7 +674,7 @@ function sendOcrResult2Server(result) {
                 () => {
                     return new Promise(resolve => setTimeout(resolve, 1000))
                         .then(()=> {
-                            confirm(dto.data.scanResult);
+                            confirm("robiscan.js의 677 line : "+dto.data.scanResult);
                         });
                 }
                 /* 예시 주석
