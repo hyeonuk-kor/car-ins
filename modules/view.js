@@ -369,6 +369,7 @@ export function printResultText(result) {
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
     } else if (cardType === ScanCardType.RESIDENCE) {
+        /*
         resultDesc += `&bull;Scan Type: Residence<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
         //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
@@ -389,6 +390,7 @@ export function printResultText(result) {
         resultDesc += `&bull;Face Score: ${scanResult.faceScore}<br/>`;
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
+        */
     } else if (scanResult.cardType === ScanCardType.RESIDENCE_BACK) {
         resultDesc += `&bull;Scan Type: Residence Back<br/>`;
         resultDesc += `&bull;Serial: ${scanResult.serial}<br/>`;                //일련번호  JTAG_ID_SERIAL
@@ -404,6 +406,27 @@ export function printResultText(result) {
         resultDesc += `&bull;Permission_4: ${scanResult.permission_4}<br/>`;    //허가일자4 JTAG_ID_PERMISSION4
         resultDesc += `&bull;Expiry_4: ${scanResult.expiry_4}<br/>`;            //만료일자4 JTAG_ID_EXPIRY4
         resultDesc += `&bull;Confirm_4: ${scanResult.confirm_4}<br/>`;          //확인4    JTAG_ID_CONFIRM4
+        scanResult = localStorage.getItem('step1Result');
+        resultDesc += `&bull;Scan Type: Residence<br/>`;
+        resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
+        //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
+        resultDesc += `&bull;IssueDate: ${scanResult.issueDate}<br/>`;
+        //resultDesc += `&bull;Issuer: ${scanResult.issuer}<br/>`;
+        resultDesc += `&bull;NameEng: ${scanResult.nameEng}<br/>`;
+        resultDesc += `&bull;Nationality: ${scanResult.nationality}<br/>`;
+        resultDesc += `&bull;VisaType: ${scanResult.residenceVisaType}<br/>`;
+        let typeText= "";
+        if (scanResult.residenceTypeCode === "0") {
+            typeText = "외국인등록증";
+        } else if (scanResult.residenceTypeCode === "1") {
+            typeText = "국내거소신고증";
+        } else if (scanResult.residenceTypeCode === "2") {
+            typeText = "영주증";
+        }
+        resultDesc += `&bull;TypeCode: ${typeText}<br/>`;
+        resultDesc += `&bull;Face Score: ${scanResult.faceScore}<br/>`;
+        resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
+        resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
     } else if (scanResult.cardType === ScanCardType.PASSPORT) {
         resultDesc += `&bull;Scan Type: Passport<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
