@@ -136,22 +136,14 @@ const Callbacks = {
 
                         // 예시: OCR 결과를 서버로 전송하기 위해 변수에 보관
                         ocrResult = result;
+                        /*
                         let sctype = getParameterByName('scanner');
-                        alert(sctype)
-                        const storedStep1Result = localStorage.getItem('step1Result');
-                        const storedStep2Result = localStorage.getItem('step2Result');
-
-                        if(sctype==='residence') {
+                        if(sctype==='RESIDENCE') {
                             localStorage.setItem('step1Result', ocrResult);
-                            window.location.href = "./robiscan.html?scanner=residence_back";
-                        } else if(sctype==='residence_back') {
+                        } else if(sctype==='RESIDENCE_back') {
                             localStorage.setItem('step2Result', ocrResult);
-                        } else {
-                            alert(storedStep1Result);
-                            alert(storedStep2Result);
-                        }
-                        // 로컬 저장소에서 결과 가져오기
-                    
+                        } 
+                        */                      
                         // 예시: OCR 서버로 결과 즉시 전송
                         // sendOcrResult2Server(result);
                     } else if(result.lastRetryType === constants.RetryType.FACE) {
