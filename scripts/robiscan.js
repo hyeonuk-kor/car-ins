@@ -151,7 +151,7 @@ const Callbacks = {
                             alert(storedStep1Result);
                             alert(storedStep2Result);
                         } else if(!storedStep2Result) {
-                            window.location.href = "./robiscan.html?scanner=RESIDENCE_back";
+                            window.location.href = "./robiscan.html?scanner=residence_back";
                         }
                         // 예시: OCR 서버로 결과 즉시 전송
                         // sendOcrResult2Server(result);
