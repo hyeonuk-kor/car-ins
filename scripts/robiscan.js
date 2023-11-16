@@ -664,7 +664,7 @@ function sendOcrResult2Server(result) {
 
             // 예시: 로딩 UI 제거
             completeFn();
-
+            alert(JSON.stringify(dto.data));
             // OCR 서버로부터 받은 결과 출력
             view.printManualResultText(dto.data);
             
