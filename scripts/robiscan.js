@@ -393,7 +393,7 @@ if(sendServerBtn) {
                     window.location.href = "./robiscan.html?scanner=residence_back";
                 } else if(check === 'residence_back') {
                     alert('신분증 뒷면 정보 전송 로직 작성');
-                    alert(JSON.stringify(ocrResult.scanResult));
+                    alert('robiscan.js의 396 : '+JSON.stringify(ocrResult.scanResult));
                 }
             }
         } else {
@@ -664,20 +664,11 @@ function sendOcrResult2Server(result) {
 
             // 예시: 로딩 UI 제거
             completeFn();
-            alert("robiscan의 667라인"+JSON.stringify(dto.data));
             // OCR 서버로부터 받은 결과 출력
             view.printManualResultText(dto.data);
             
             // 예시: OCR 서버로부터 전달받은 마스킹된 크롭 결과 이미지 출력
             view.showResultImage(
-                dto.data.cropIdImage, // 미리보기, 실제로 보낼 건 dto.data.fullFrameIdImage
-                () => {
-                    return new Promise(resolve => setTimeout(resolve, 1000))
-                        .then(()=> {
-                            confirm("robiscan.js의 677 line : "+dto.data.scanResult);
-                        });
-                }
-                /* 예시 주석
                 dto.data.maskedCropIdImage, // 마스킹 된 크롭 이미지 선택
                 
                 // 예시: 이미지 완료되면 호출되는 콜백 등록
@@ -698,7 +689,7 @@ function sendOcrResult2Server(result) {
                             dto.data.photoIdImage = null;
                         });
                 }
-                */
+                
             );
         })
         .catch((msg, status, error) => {
