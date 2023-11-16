@@ -495,10 +495,12 @@ function showServerSendBtn(show) {
     if (show) {
         let check = getParameterByName('scanner');
         if(check === 'residence') {
-            alert('앞면 촬영하는 곳임')
+            document.getElementById("camera-type").textContent = '신분증 앞면 촬영';
             document.getElementById("sendServerBtn").textContent = '신분증 뒷면 촬영';
-            
-        } 
+        } else if(check === 'residence_back') {
+            document.getElementById("camera-type").textContent = '신분증 뒷면 촬영';
+            document.getElementById("sendServerBtn").textContent = '전송';    
+        }
         document.getElementById("sendServerBtn").style.display = "inline-block";
     } else {
         document.getElementById("sendServerBtn").style.display = "none";
