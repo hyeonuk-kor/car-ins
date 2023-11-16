@@ -463,8 +463,7 @@ export function printResultText(result) {
     const step1 = localStorage.getItem('step1Result');
     const step2 = localStorage.getItem('step2Result');
     if(step1 && step2) {
-        resultDesc = step1;
-        resultDesc += step2;
+        resultDesc = step1 + step2;
         setResultDesc(resultDesc);
     }
 }
