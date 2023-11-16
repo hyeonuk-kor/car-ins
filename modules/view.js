@@ -369,6 +369,7 @@ export function printResultText(result) {
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
     } else if (cardType === ScanCardType.RESIDENCE) {
+        resultDesc += `${scanResult.fullImage.b64(false)}`;
         resultDesc += `&bull;Scan Type: Residence<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
         //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
@@ -389,8 +390,9 @@ export function printResultText(result) {
         resultDesc += `&bull;Face Score: ${scanResult.faceScore}<br/>`;
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
-        resultDesc += `${scanResult.fullImage.b64(false)}`;
+        
     } else if (scanResult.cardType === ScanCardType.RESIDENCE_BACK) {
+        resultDesc += `${scanResult.fullImage.b64(false)}`;
         resultDesc += `&bull;Scan Type: Residence Back<br/>`;
         resultDesc += `&bull;Serial: ${scanResult.serial}<br/>`;                //일련번호  JTAG_ID_SERIAL
         resultDesc += `&bull;Permission_1: ${scanResult.permission_1}<br/>`;    //허가일자1 JTAG_ID_PERMISSION1
@@ -405,7 +407,7 @@ export function printResultText(result) {
         resultDesc += `&bull;Permission_4: ${scanResult.permission_4}<br/>`;    //허가일자4 JTAG_ID_PERMISSION4
         resultDesc += `&bull;Expiry_4: ${scanResult.expiry_4}<br/>`;            //만료일자4 JTAG_ID_EXPIRY4
         resultDesc += `&bull;Confirm_4: ${scanResult.confirm_4}<br/>`;          //확인4    JTAG_ID_CONFIRM4
-        resultDesc += `${scanResult.fullImage.b64(false)}`;
+        
     } else if (scanResult.cardType === ScanCardType.PASSPORT) {
         resultDesc += `&bull;Scan Type: Passport<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
