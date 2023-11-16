@@ -672,6 +672,14 @@ function sendOcrResult2Server(result) {
             
             // 예시: OCR 서버로부터 전달받은 마스킹된 크롭 결과 이미지 출력
             view.showResultImage(
+                dto.data.cropIdImage, // 미리보기, 실제로 보낼 건 dto.data.fullFrameIdImage
+                () => {
+                    return new Promise(resolve => setTimeout(resolve, 1000))
+                        .then(()=> {
+                            confirm(dto.data.scanResult);
+                        });
+                }
+                /* 예시 주석
                 dto.data.maskedCropIdImage, // 마스킹 된 크롭 이미지 선택
                 
                 // 예시: 이미지 완료되면 호출되는 콜백 등록
@@ -679,12 +687,12 @@ function sendOcrResult2Server(result) {
                     // 예시: 로딩 완료되면 1초 기다렸다가 이미지 로딩 UI 제거 및 후처리
                     return new Promise(resolve => setTimeout(resolve, 1000))
                         .then(() => {
-                            /*
+                            
                             let isConfirm = confirm("확인 버튼을 누르면 이미지가 삭제됩니다.");
                             if(isConfirm) {
                                 view.clearResultCanvas();
                             }
-                            */
+                            
                             // 전달받은 결과 이미지들 삭제
                             dto.data.cropIdImage = null;
                             dto.data.maskedCropIdImage = null;
@@ -692,6 +700,7 @@ function sendOcrResult2Server(result) {
                             dto.data.photoIdImage = null;
                         });
                 }
+                */
             );
         })
         .catch((msg, status, error) => {
