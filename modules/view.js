@@ -75,8 +75,8 @@ export function resultCallback(status, result) {
             printResultText(result);
 
             if(!result.fuzzed) {
-                if(result.scanResult && result.scanResult.maskedCardImage) {
-                    showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
+                if(result.scanResult && result.scanResult.cardImage) {
+                    showResultImage(result.scanResult.cardImage.b64(result.fuzzed), 
                         () => {
                             util.sleep(1000).then(() => {
                                 let isConfirm = confirm("스캔 결과 이미지입니다.\n확인 버튼을 누르면 이미지가 삭제됩니다.");
