@@ -664,7 +664,8 @@ export class RobiImage {
             binaryString += String.fromCharCode(this.encodedstream[i]);
         }
 
-        return is_fuzzed ? binaryString : window.btoa(binaryString);
+      //  return is_fuzzed ? binaryString : window.btoa(binaryString);
+        return window.btoa(binaryString);
     }
 }
 
