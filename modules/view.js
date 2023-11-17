@@ -88,7 +88,7 @@ export function resultCallback(status, result) {
                         });
                 }*/
                 if(result.scanResult)
-                    showResultImage(result.scanResult.cardImage.b64(is_fuzzed))
+                    showResultImage(result.scanResult.maskedCardImage.b64(false))
             }
         }
     } else if(status === ScannerStatus.STOP_CAMERA) {
