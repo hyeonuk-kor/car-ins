@@ -4,7 +4,7 @@
   "customer": "posicube",
   "scanner": {
     "doRetry": true,
-    "sendResultToServer": false,
+    "sendResultToServer": true,
     "fuzz": false,
     "loadTimeout": 0,
     "detectTimeout": 30,
