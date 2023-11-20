@@ -453,7 +453,7 @@ export function printResultText(result) {
         resultDesc += `&bull;GiroMRZ2: ${scanResult.giro_mrz2}<br/>`;
         resultDesc += `&bull;GiroPayNum: ${scanResult.giro_payment_number}<br/>`;
     }
-
+    resultDesc = `촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.`;
     setResultDesc(resultDesc);
 }
 
