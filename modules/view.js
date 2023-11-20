@@ -73,8 +73,8 @@ export function resultCallback(status, result) {
         // 스캔이 완료됨
         if(result.lastRetryType === RetryType.SUCCESS) {
             showResultImage(result.scanResult.cardImage.b64(result.fuzzed));
-            /*
             printResultText(result);
+            /*
             if(!result.fuzzed) {
                 if(result.scanResult && result.scanResult.maskedCardImage) {
                     showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
@@ -453,6 +453,7 @@ export function printResultText(result) {
         resultDesc += `&bull;GiroMRZ2: ${scanResult.giro_mrz2}<br/>`;
         resultDesc += `&bull;GiroPayNum: ${scanResult.giro_payment_number}<br/>`;
     }
+    resultDesc = '촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.';
     setResultDesc(resultDesc);
 }
 

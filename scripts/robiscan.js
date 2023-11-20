@@ -351,7 +351,6 @@ if(sendServerBtn) {
                     alert('신분증 뒷면 정보 전송 로직 작성');
                     alert('robiscan.js의 396 : '+JSON.stringify(ocrResult.scanResult));
                 }
-                document.getElementById("resultBoxDesc").textContent = '촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.';
             }
         } else {
             logger.info("upload image to ocr server");
