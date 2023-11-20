@@ -56,7 +56,7 @@ const Callbacks = {
             // 서버 전송 UI 표시
             let showBtn = (config && config.scanner && config.scanner.sendResultToServer);
             showServerSendBtn(showBtn);
-
+            console.log(config)
             // 스캐너 동작 시작
             scanner.startScanner()
             .then((availableAutoScanner) => {
@@ -136,7 +136,7 @@ const Callbacks = {
 
                         // 예시: OCR 결과를 서버로 전송하기 위해 변수에 보관
                         ocrResult = result;
-                        
+                                          
                         // 예시: OCR 서버로 결과 즉시 전송
                         // sendOcrResult2Server(result);
                     } else if(result.lastRetryType === constants.RetryType.FACE) {
@@ -330,6 +330,48 @@ if(redetectBtn) {
 /**
  * "서버전송" 버튼 클릭 시 발생하는 이벤트
  */
+
+/* 전송될 데이터 참고하기
+* if (cardType === ScanCardType.RESIDENCE) {
+        resultDesc += `&bull;Scan Type: Residence<br/>`;
+        resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
+        //resultDesc += `&bull;Name: ${scanResult.name}<br/>`;
+        resultDesc += `&bull;IssueDate: ${scanResult.issueDate}<br/>`;
+        //resultDesc += `&bull;Issuer: ${scanResult.issuer}<br/>`;
+        resultDesc += `&bull;NameEng: ${scanResult.nameEng}<br/>`;
+        resultDesc += `&bull;Nationality: ${scanResult.nationality}<br/>`;
+        resultDesc += `&bull;VisaType: ${scanResult.residenceVisaType}<br/>`;
+        let typeText= "";
+        if (scanResult.residenceTypeCode === "0") {
+            typeText = "외국인등록증";
+        } else if (scanResult.residenceTypeCode === "1") {
+            typeText = "국내거소신고증";
+        } else if (scanResult.residenceTypeCode === "2") {
+            typeText = "영주증";
+        }
+        resultDesc += `&bull;TypeCode: ${typeText}<br/>`;
+        resultDesc += `&bull;Face Score: ${scanResult.faceScore}<br/>`;
+        resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
+        resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
+        
+    } else if (scanResult.cardType === ScanCardType.RESIDENCE_BACK) {
+        resultDesc += `&bull;Scan Type: Residence Back<br/>`;
+        resultDesc += `&bull;Serial: ${scanResult.serial}<br/>`;                //일련번호  JTAG_ID_SERIAL
+        resultDesc += `&bull;Permission_1: ${scanResult.permission_1}<br/>`;    //허가일자1 JTAG_ID_PERMISSION1
+        resultDesc += `&bull;Expiry_1: ${scanResult.expiry_1}<br/>`;            //만료일자1 JTAG_ID_EXPIRY1
+        resultDesc += `&bull;Confirm_1: ${scanResult.confirm_1}<br/>`;          //확인1    JTAG_ID_CONFIRM1 
+        resultDesc += `&bull;Permission_2: ${scanResult.permission_2}<br/>`;    //허가일자2 JTAG_ID_PERMISSION2
+        resultDesc += `&bull;Expiry_2: ${scanResult.expiry_2}<br/>`;            //만료일자2 JTAG_ID_EXPIRY2
+        resultDesc += `&bull;Confirm_2: ${scanResult.confirm_2}<br/>`;          //확인2    JTAG_ID_CONFIRM2 
+        resultDesc += `&bull;Permission_3: ${scanResult.permission_3}<br/>`;    //허가일자3 JTAG_ID_PERMISSION3
+        resultDesc += `&bull;Expiry_3: ${scanResult.expiry_3}<br/>`;            //만료일자3 JTAG_ID_EXPIRY3
+        resultDesc += `&bull;Confirm_3: ${scanResult.confirm_3}<br/>`;          //확인3    JTAG_ID_CONFIRM3 
+        resultDesc += `&bull;Permission_4: ${scanResult.permission_4}<br/>`;    //허가일자4 JTAG_ID_PERMISSION4
+        resultDesc += `&bull;Expiry_4: ${scanResult.expiry_4}<br/>`;            //만료일자4 JTAG_ID_EXPIRY4
+        resultDesc += `&bull;Confirm_4: ${scanResult.confirm_4}<br/>`;          //확인4    JTAG_ID_CONFIRM4   
+    }
+*/
+
 let sendServerBtn = document.getElementById("sendServerBtn");
 if(sendServerBtn) {
     sendServerBtn.addEventListener("click", () => {
@@ -338,7 +380,7 @@ if(sendServerBtn) {
         const isAuto = scanner.isAutoMode();
         if (isAuto) {
             logger.info("send ocr result to ocr server");
-
+            
             // 자동 스캔 결과 서버 전송
             if(ocrResult == null) {
                 alert("서버에 전송할 데이터가 없습니다.");
@@ -487,14 +529,6 @@ registerCameraCaptureEvent(
     90
 );
 
-/*
-function showServerSendBtn(show) {
-    if (show) {
-        document.getElementById("sendServerBtn").style.display = "inline-block";
-    } else {
-        document.getElementById("sendServerBtn").style.display = "none";
-    }
-} */
 function showServerSendBtn(show) {
     if (show) {
         let check = getParameterByName('scanner');
@@ -631,7 +665,6 @@ function sendOcrResult2Server(result) {
 
             // 예시: 로딩 UI 제거
             completeFn();
-
             // OCR 서버로부터 받은 결과 출력
             view.printManualResultText(dto.data);
             
@@ -644,11 +677,12 @@ function sendOcrResult2Server(result) {
                     // 예시: 로딩 완료되면 1초 기다렸다가 이미지 로딩 UI 제거 및 후처리
                     return new Promise(resolve => setTimeout(resolve, 1000))
                         .then(() => {
+                            
                             let isConfirm = confirm("확인 버튼을 누르면 이미지가 삭제됩니다.");
                             if(isConfirm) {
                                 view.clearResultCanvas();
                             }
-
+                            
                             // 전달받은 결과 이미지들 삭제
                             dto.data.cropIdImage = null;
                             dto.data.maskedCropIdImage = null;
@@ -656,13 +690,14 @@ function sendOcrResult2Server(result) {
                             dto.data.photoIdImage = null;
                         });
                 }
+                
             );
         })
         .catch((msg, status, error) => {
             logger.error(`message: ${msg}\nstatus: ${status}\nerror: ${error}`);
             
             // 예시: 실패 메시지 출력
-            alert(msg);
+            //alert(msg);
 
             // 예시: 로딩 UI 제거
             completeFn();
