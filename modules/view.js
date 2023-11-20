@@ -72,8 +72,9 @@ export function resultCallback(status, result) {
     } else if(status === ScannerStatus.SCAN_COMPLETE) {
         // 스캔이 완료됨
         if(result.lastRetryType === RetryType.SUCCESS) {
+            showResultImage(result.scanResult.cardImage.b64(result.fuzzed));
+            /*
             printResultText(result);
-
             if(!result.fuzzed) {
                 if(result.scanResult && result.scanResult.maskedCardImage) {
                     showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
@@ -86,7 +87,7 @@ export function resultCallback(status, result) {
                             });
                         });
                 }
-            }
+            } */
         }
     } else if(status === ScannerStatus.STOP_CAMERA) {
         // 카메라 및 스캐너 종료 진행
