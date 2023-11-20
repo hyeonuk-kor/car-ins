@@ -390,7 +390,8 @@ if(sendServerBtn) {
                 if(check === 'residence') {
                     alert('신분증 앞면 정보 전송 로직 작성')
                     alert('robiscan.js의 392 : '+JSON.stringify(ocrResult.scanResult));
-                    window.location.href = "./robiscan.html?scanner=residence_back";
+                    //let a =  fetch().then();
+                    window.location.replace("./robiscan.html?scanner=residence_back");
                 } else if(check === 'residence_back') {
                     alert('신분증 뒷면 정보 전송 로직 작성');
                     alert('robiscan.js의 396 : '+JSON.stringify(ocrResult.scanResult));
