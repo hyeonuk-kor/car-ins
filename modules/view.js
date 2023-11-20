@@ -72,15 +72,11 @@ export function resultCallback(status, result) {
     } else if(status === ScannerStatus.SCAN_COMPLETE) {
         // 스캔이 완료됨
         if(result.lastRetryType === RetryType.SUCCESS) {
-            showResultImage(result.scanResult.cardImage.b64(result.fuzzed));
-            /*
             printResultText(result);
 
             if(!result.fuzzed) {
-                // if(result.scanResult && result.scanResult.maskedCardImage) {
-                //     showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
-                if(result.scanResult && result.scanResult.cardImage) {
-                        showResultImage(result.scanResult.cardImage.b64(result.fuzzed), 
+                if(result.scanResult && result.scanResult.maskedCardImage) {
+                    showResultImage(result.scanResult.maskedCardImage.b64(result.fuzzed), 
                         () => {
                             util.sleep(1000).then(() => {
                                 let isConfirm = confirm("스캔 결과 이미지입니다.\n확인 버튼을 누르면 이미지가 삭제됩니다.");
@@ -91,7 +87,6 @@ export function resultCallback(status, result) {
                         });
                 }
             }
-            */
         }
     } else if(status === ScannerStatus.STOP_CAMERA) {
         // 카메라 및 스캐너 종료 진행
@@ -348,7 +343,7 @@ export function printResultText(result) {
         return;
     }
     const cardType = scanResult.cardType;
-
+    
     if (cardType === ScanCardType.IDCARD) {
         resultDesc += `&bull;Scan Type: ID Card<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
@@ -394,7 +389,6 @@ export function printResultText(result) {
         resultDesc += `&bull;Face Score: ${scanResult.faceScore}<br/>`;
         resultDesc += `&bull;Color Score: ${scanResult.colorScore}<br/>`;
         resultDesc += `&bull;Specular Ratio: ${scanResult.specularRatio}<br/>`;
-        
     } else if (scanResult.cardType === ScanCardType.RESIDENCE_BACK) {
         resultDesc += `&bull;Scan Type: Residence Back<br/>`;
         resultDesc += `&bull;Serial: ${scanResult.serial}<br/>`;                //일련번호  JTAG_ID_SERIAL
@@ -410,7 +404,6 @@ export function printResultText(result) {
         resultDesc += `&bull;Permission_4: ${scanResult.permission_4}<br/>`;    //허가일자4 JTAG_ID_PERMISSION4
         resultDesc += `&bull;Expiry_4: ${scanResult.expiry_4}<br/>`;            //만료일자4 JTAG_ID_EXPIRY4
         resultDesc += `&bull;Confirm_4: ${scanResult.confirm_4}<br/>`;          //확인4    JTAG_ID_CONFIRM4
-        
     } else if (scanResult.cardType === ScanCardType.PASSPORT) {
         resultDesc += `&bull;Scan Type: Passport<br/>`;
         resultDesc += `&bull;ID Number: ${scanResult.idNumber}<br/>`;
@@ -459,18 +452,8 @@ export function printResultText(result) {
         resultDesc += `&bull;GiroMRZ2: ${scanResult.giro_mrz2}<br/>`;
         resultDesc += `&bull;GiroPayNum: ${scanResult.giro_payment_number}<br/>`;
     }
-    resultDesc = `촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.`
-    setResultDesc(resultDesc);
-    
-    
-}
 
-function getParameterByName(name, url = window.location.href) {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`), results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    setResultDesc(resultDesc);
 }
 
 export function printManualResultText(result) {

@@ -295,7 +295,7 @@ export class WebCamera {
       .then(browserInfo => {
         this.browserInfo = browserInfo;
 
-        //alert(`parsed browser info: ${JSON.stringify(browserInfo)}`);
+        alert(`parsed browser info: ${JSON.stringify(browserInfo)}`);
 
         // apple과 android 만 확인하여 일정 버전 이하인 경우 low 해상도 profile을 사용
         if(this.browserInfo.osName === OsType.IOS) {
