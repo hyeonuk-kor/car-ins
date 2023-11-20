@@ -371,7 +371,10 @@ if(redetectBtn) {
         resultDesc += `&bull;Confirm_4: ${scanResult.confirm_4}<br/>`;          //확인4    JTAG_ID_CONFIRM4   
     }
 */
-
+var old = alert;
+alert = function() {
+    old.apply(window, arguments);
+}
 let sendServerBtn = document.getElementById("sendServerBtn");
 if(sendServerBtn) {
     sendServerBtn.addEventListener("click", () => {
@@ -697,7 +700,7 @@ function sendOcrResult2Server(result) {
             logger.error(`message: ${msg}\nstatus: ${status}\nerror: ${error}`);
             
             // 예시: 실패 메시지 출력
-            alert(msg);
+            //alert(msg);
 
             // 예시: 로딩 UI 제거
             completeFn();
