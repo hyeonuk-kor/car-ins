@@ -351,6 +351,7 @@ if(sendServerBtn) {
                     alert('신분증 뒷면 정보 전송 로직 작성');
                     alert('robiscan.js의 396 : '+JSON.stringify(ocrResult.scanResult));
                 }
+                document.getElementById("resultBoxDesc").textContent = '촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.';
             }
         } else {
             logger.info("upload image to ocr server");
@@ -494,7 +495,7 @@ function showServerSendBtn(show) {
             document.getElementById("camera-type").textContent = '신분증 뒷면 촬영';
             document.getElementById("sendServerBtn").textContent = '전송';    
         }
-        document.getElementById("resultBoxDesc").textContent = '촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.';
+        document.getElementById("resultBoxDesc1").textContent = '촬영 상태가 실제 신분증과 차이가 나면 재촬영해주세요.';
         document.getElementById("sendServerBtn").style.display = "inline-block";
     } else {
         document.getElementById("sendServerBtn").style.display = "none";
